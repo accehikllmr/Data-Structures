@@ -1,6 +1,6 @@
 package linear;
 
-public class ConsoleTester {
+public class TesterLinkedList {
 	
 	public static void main(String[] args) {
 		
