@@ -160,6 +160,27 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 		}	
 	}
 	
+	public T findMiddleTwoPointers() throws IllegalStateException {
+		if (this.head == null) {
+			throw new IllegalStateException("Empty list.");
+		} else {
+			Node<T> leftPtr = this.head;
+			Node<T> rightPtr = this.tail;
+			if (this.size % 2 == 0) {
+				while (leftPtr.getNext() != rightPtr) {
+					leftPtr = leftPtr.getNext();
+					rightPtr = rightPtr.getPrev();
+				}
+			} else {
+				while (leftPtr != rightPtr) {
+					leftPtr = leftPtr.getNext();
+					rightPtr = rightPtr.getPrev();
+				}
+			}
+			return rightPtr.getData();
+		}
+	}
+	
 	/* obligatory methods */
 	@Override
 	public String toString() {

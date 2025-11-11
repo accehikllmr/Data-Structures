@@ -6,18 +6,23 @@ public class ConsoleTester {
 		
 		DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
 		
-		//list.insertAtBeginning(9);
-		//list.insertAtBeginning(8);
-		//list.insertAtBeginning(7);
-		//list.insertAtBeginning(6);
-		//list.insertAtBeginning(5);
-		//list.insertAtBeginning(4);
-		//list.insertAtBeginning(3);
-		//list.insertAtBeginning(2);
-		//list.insertAtBeginning(1);
-		//list.insertAtBeginning(0);
+		list.insertAtBeginning(9);
+		list.insertAtBeginning(8);
+		list.insertAtBeginning(7);
+		list.insertAtBeginning(6);
+		list.insertAtBeginning(5);
+		list.insertAtBeginning(4);
+		list.insertAtBeginning(3);
+		list.insertAtBeginning(2);
+		list.insertAtBeginning(1);
+		list.insertAtBeginning(0);
+//		try {
+//			System.out.println(list.findMiddle().toString());
+//		} catch (IllegalStateException e) {
+//			System.out.println(e.getMessage());
+//		}
 		try {
-			System.out.println(list.findMiddle().toString());
+			System.out.println(list.findMiddleTwoPointers().toString());
 		} catch (IllegalStateException e) {
 			System.out.println(e.getMessage());
 		}
