@@ -4,6 +4,24 @@ public class ConsoleTester {
 	
 	public static void main(String[] args) {
 		
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
+		
+		list.insertAtBeginning(9);
+		list.insertAtBeginning(8);
+		list.insertAtBeginning(7);
+		list.insertAtBeginning(6);
+		list.insertAtBeginning(5);
+		list.insertAtBeginning(4);
+		list.insertAtBeginning(3);
+		list.insertAtBeginning(2);
+		list.insertAtBeginning(1);
+		list.insertAtBeginning(0);
+		try {
+			System.out.println(list.findMiddle().toString());
+		} catch (IllegalStateException e) {
+			System.out.println(e);
+		}
+		
 //		LinkedList<Integer> list = new SinglyLinkedList<Integer>();
 //		list.display();
 //		list.insertAtBeginning(1);			// insert at beginning 		when size is 		0

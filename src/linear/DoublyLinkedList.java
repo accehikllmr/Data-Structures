@@ -163,5 +163,18 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 				
 		return before;
 	}
-
+	
+	public T findMiddle() throws IllegalStateException {
+		if (this.head == null) {
+			throw new IllegalStateException("Empty list.");
+		} else if (this.head == this.tail) {
+			return this.head.getData();
+		} else {
+			Node<T> middleNode = this.tail;
+			for (int i = this.size; i > this.size / 2; i--) {
+				middleNode = middleNode.getPrev();
+			}
+			return middleNode.getData();
+		}	
+	}
 }
