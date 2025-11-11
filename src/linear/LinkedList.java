@@ -33,6 +33,5 @@ public abstract class LinkedList<T> {
 	
 	/* helper methods */
 	public abstract Node<T> getNodeBefore(int position);
-	public abstract void display();
 	
 }

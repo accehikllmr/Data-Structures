@@ -21,7 +21,7 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 		}
 		
 		this.size++;
-		this.display();
+		System.out.println(this.toString());
 	}
 	
 	public void insertAtEnd(T data) {
@@ -36,12 +36,12 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 		}
 
 		this.size++;
-		this.display();
+		System.out.println(this.toString());
 	}
 	
 	public void insertAtPosition(int position, T data) throws IndexOutOfBoundsException {
 		if (position < 0 || position > this.size) {
-			this.display();
+			System.out.println(this.toString());
 			throw new IndexOutOfBoundsException("Invalid position: " + position);
 		} else if (position == 0) {
 			this.insertAtBeginning(data);
@@ -64,12 +64,12 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 		}
 		
 		this.size++;
-		this.display();
+		System.out.println(this.toString());
 	}
 	
 	public T deleteFromBeginning() {
 		if (this.head == null) {
-			this.display();
+			System.out.println(this.toString());
 			return null;
 		}
 		
@@ -83,7 +83,7 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 		}
 
 		this.size--;
-		this.display();
+		System.out.println(this.toString());
 		return deletedData;
 		
 	}
@@ -92,7 +92,7 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 		T deletedData = null;
 		
 		if (this.head == null) {
-			this.display();
+			System.out.println(this.toString());
 			return null;
 		} else if (this.head == this.tail) {
 			deletedData = this.deleteFromBeginning();
@@ -103,7 +103,7 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 		}
 		
 		this.size--;
-		this.display();
+		System.out.println(this.toString());
 		return deletedData;
 	}
 	
@@ -125,27 +125,11 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 		before.getNext().getNext().setPrev(before);
 		before.setNext(before.getNext().getNext());
 		this.size--;
-		this.display();
+		System.out.println(this.toString());
 		return deletedData;
 	}
 	
-	/* helper methods */
-	public void display() {
-		if (this.head == null) {
-			System.out.println("Empty list.");
-			return;
-		}
-		
-		Node<T> current = this.head;
-		String list = "";
-		while (current != null) {
-			list += String.format("%s%s%s%s", (current.equals(this.head)) ? "*" : "", current.getData().toString(),
-					(current.equals(this.tail)) ? "*" : "", (current.getNext() == null) ? "" : " <-> ");
-			current = current.getNext();
-		}
-		System.out.println(list);
-	}
-	
+	/* helper methods */	
 	public Node<T> getNodeBefore(int position) {
 		Node<T> before;
 		
@@ -176,5 +160,23 @@ public class DoublyLinkedList<T> extends LinkedList<T> {
 			}
 			return middleNode.getData();
 		}	
+	}
+	
+	/* obligatory methods */
+	@Override
+	public String toString() {
+		String list = "";
+		if (this.head == null) {
+			list = "Empty list.";
+			return list;
+		}
+		
+		Node<T> current = this.head;
+		while (current != null) {
+			list += String.format("%s%s%s%s", (current.equals(this.head)) ? "*" : "", current.getData().toString(),
+					(current.equals(this.tail)) ? "*" : "", (current.getNext() == null) ? "" : " <-> ");
+			current = current.getNext();
+		}
+		return list;
 	}
 }

@@ -23,7 +23,7 @@ public class ConsoleTester {
 		}
 		
 //		LinkedList<Integer> list = new SinglyLinkedList<Integer>();
-//		list.display();
+//		System.out.println(list.toString());
 //		list.insertAtBeginning(1);			// insert at beginning 		when size is 		0
 //		list.insertAtBeginning(2);			// insert at beginning 		when size is 		not 0
 //		list.insertAtEnd(4);				// insert at end 			when size is		not 0
@@ -47,7 +47,7 @@ public class ConsoleTester {
 	
 //		LinkedList<Integer> list = new DoublyLinkedList<Integer>();
 //		
-//		list.display();
+//		System.out.println(list.toString());
 //		list.deleteFromBeginning();			// delete from beginning	when size is		0
 //		list.deleteFromEnd();				// delete from end			when size is		0
 //		//list.deleteFromPosition(0);		// delete from position		when size is		0

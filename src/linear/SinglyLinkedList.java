@@ -14,7 +14,7 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
 		this.head = newNode;
 		this.tail = (this.size != 0) ? this.tail : this.head;
 		this.size++;
-		this.display();
+		System.out.println(this.toString());
 	}
 	
 	public void insertAtEnd(T data) {
@@ -28,12 +28,12 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
 		}
 		
 		this.size++;
-		this.display();
+		System.out.println(this.toString());
 	}
 	
 	public void insertAtPosition(int position, T data) throws IndexOutOfBoundsException {
 		if (position < 0 || position > this.size) {
-			this.display();
+			System.out.println(this.toString());
 			throw new IndexOutOfBoundsException("Invalid position: " + position);
 		} else if (position == 0) {
 			this.insertAtBeginning(data);
@@ -54,12 +54,12 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
 		}		
 		
 		this.size++;
-		this.display();
+		System.out.println(this.toString());
 	}
 	
 	public T deleteFromBeginning() {
 		if (this.head == null) {
-			this.display();
+			System.out.println(this.toString());
 			return null;
 		}
 		
@@ -67,7 +67,7 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
 		this.head = this.head.getNext();
 		this.size--;
 		this.tail = (this.size != 0) ? this.tail : this.head;
-		this.display();
+		System.out.println(this.toString());
 		return deletedData;
 	}
 	
@@ -75,7 +75,7 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
 		T deletedData = null;
 		
 		if (this.head == null) {
-			this.display();
+			System.out.println(this.toString());
 			return null;
 		} else if (this.head == this.tail) {
 			deletedData = this.deleteFromBeginning();
@@ -87,7 +87,7 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
 		before.setNext(null);
 		this.tail = before;
 		this.size--;
-		this.display();
+		System.out.println(this.toString());
 		return deletedData;
 	}
 	
@@ -95,7 +95,7 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
 		T deletedData = null;
 		
 		if (position < 0 || position >= this.size) {
-			this.display();
+			System.out.println(this.toString());
 			throw new IndexOutOfBoundsException("Invalid position: " + position);
 		} else if (position == 0) {
 			deletedData = this.deleteFromBeginning();
@@ -109,32 +109,34 @@ public class SinglyLinkedList<T> extends LinkedList<T> {
 		deletedData = before.getNext().getData();
 		before.setNext(before.getNext().getNext());
 		this.size--;
-		this.display();
+		System.out.println(this.toString());
 		return deletedData;
 	}
 	
 	/* helper methods */
-	public void display() {
-		if (this.head == null) {
-			System.out.println("Empty list.");
-			return;
-		}
-		
-		Node<T> current = this.head;
-		String list = "";
-		while (current != null) {
-			list += String.format("%s%s%s%s", (current.equals(this.head)) ? "*" : "", current.getData().toString(), 
-					(current.equals(this.tail)) ? "*" : "", (current.getNext() == null) ? "" : " -> ");
-			current = current.getNext();
-		}
-		System.out.println(list);
-	}
-
 	public Node<T> getNodeBefore(int position) {
 		Node<T> before = this.head;
 		for (int i = 0; i < position - 1; i++) {
 			before = before.getNext();
 		}
 		return before;
+	}
+	
+	/* obligatory methods */
+	@Override
+	public String toString() {
+		String list = "";
+		if (this.head == null) {
+			list = "Empty list.";
+			return list;
+		}
+		
+		Node<T> current = this.head;
+		while (current != null) {
+			list += String.format("%s%s%s%s", (current.equals(this.head)) ? "*" : "", current.getData().toString(), 
+					(current.equals(this.tail)) ? "*" : "", (current.getNext() == null) ? "" : " -> ");
+			current = current.getNext();
+		}
+		return list;
 	}
 }
