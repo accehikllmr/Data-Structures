@@ -76,7 +76,7 @@ public class ArrayStack<E> implements Stack<E> {
 			stack.append(String.format("%s%s", this.data[i].toString(), (i != this.size - 1) ? ", " : ""));
 		}
 		
-		stack.append("]");
+		stack.append("^]");
 		return stack.toString();
 	}
 }
